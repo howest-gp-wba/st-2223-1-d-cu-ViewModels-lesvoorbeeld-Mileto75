@@ -1,0 +1,17 @@
+﻿@model DevelopersMenuViewModel
+
+<!-- Dropdown -->
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Developers
+    </a>
+    <div class="dropdown-menu">
+        @foreach(var developer in Model.Developers)
+        { 
+        <a class="dropdown-item" 
+           asp-controller="Developers"
+           asp-action="ShowGames"
+           asp-route-id="@developer.Id">@developer.Name</a>
+        }
+    </div>
+</li>
