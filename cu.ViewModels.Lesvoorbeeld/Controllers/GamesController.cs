@@ -18,24 +18,32 @@ namespace cu.ViewModels.Lesvoorbeeld.Controllers
             //ViewBag.PageTitle = "Our not so cool Games!";
             ViewData["PageTitle"] = "Our Cool Games!";
             //get all the games
-            var games = _gameRepository
-                .GetGames();
+            //var games = _gameRepository
+            //    .GetGames();
+
+            //fill the model
+            //gamesIndexViewModel.Games =
+            //    new List<GamesGetGameViewModel>();
+            //foreach(var game in games)
+            //{
+            //    gamesIndexViewModel.Games.Add(
+            //        new GamesGetGameViewModel
+            //        {
+            //            Title = game.Title,
+            //            Developer = game.Developer.Name
+            //        }
+            //        );
+            //}
             //create the model
             GamesIndexViewModel gamesIndexViewModel
                 = new();
-            //fill the model
-            gamesIndexViewModel.Games =
-                new List<GamesGetGameViewModel>();
-            foreach(var game in games)
-            {
-                gamesIndexViewModel.Games.Add(
-                    new GamesGetGameViewModel
-                    {
-                        Title = game.Title,
-                        Developer = game.Developer.Name
-                    }
-                    );
-            }
+            gamesIndexViewModel.Games
+                = _gameRepository.GetGames().Select(g => 
+                new GamesGetGameViewModel
+                { 
+                   Title = g.Title,
+                   Developer = g.Developer.Name
+                });
                 
             return View(gamesIndexViewModel);
         }
