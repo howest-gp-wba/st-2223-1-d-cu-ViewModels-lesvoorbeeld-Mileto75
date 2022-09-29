@@ -1,0 +1,15 @@
+﻿@model GamesIndexViewModel
+<h1>@ViewData["PageTitle"]</h1>
+<table class="table table-active table-responsive table-hover">
+    <tr>
+        <th>Title</th>
+        <th>Developer</th>
+    </tr>
+    @foreach(var game in Model.Games)
+    { 
+        <tr>
+            <td>@game.Title</td>
+            <td>@game.Developer</td>
+        </tr>
+    }
+</table>
