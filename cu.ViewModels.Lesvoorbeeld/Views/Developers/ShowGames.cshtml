@@ -1,0 +1,17 @@
+﻿@model HomeIndexViewModel
+
+<h1></h1>
+<table class="table table-primary table-responsive-md">
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+    </tr>
+    @foreach (var game in Model.Games)
+    {
+        <tr>
+            <td>@game.Id</td>
+            <td>@game.Title</td>
+        </tr>
+    }
+</table>
+
