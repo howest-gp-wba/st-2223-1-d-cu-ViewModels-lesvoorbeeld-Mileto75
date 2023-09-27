@@ -1,0 +1,8 @@
+﻿@model cu.ViewModels.Lesvoorbeeld.ViewModels.GamesIndexViewModel
+
+<h1>@ViewData["PageTitle"]</h1>
+@foreach(var game in Model.Games)
+{ 
+    @game<br />
+}
+
