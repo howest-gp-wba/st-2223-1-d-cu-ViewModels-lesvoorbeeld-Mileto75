@@ -17,24 +17,43 @@ namespace cu.ViewModels.Lesvoorbeeld.Controllers
         {
             //ViewBag
             ViewBag.PageTitle = "Our coolest games";
-            ////ViewData
-            //ViewData["PageTitle"] = "Our coolest games";
-            //ViewBag.Games = _gameRepository
-            //    .GetGames();
             //init model
-            var gamesIndexViewModel = new GamesIndexViewModel();
             //get the games
-            var games = _gameRepository.GetGames();
             //put games in model aka fill the model
             //loop over games and add to model
-            //old skool way
-            gamesIndexViewModel.Games = new();
-            foreach (var game in games)
+            var gamesIndexViewModel = new GamesIndexViewModel
             {
-                gamesIndexViewModel.Games.Add(game.Title);
-            }
+                Games = _gameRepository
+                .GetGames()
+                .Select(g => new BaseViewModel
+                {
+                    Id = g.Id,
+                    Text = g.Title
+                }),
+            };
             //pass the model to the view
             return View(gamesIndexViewModel);
+        }
+        public IActionResult Info(int id) 
+        {
+            //get the game
+            var game = _gameRepository.GetGames()
+                .FirstOrDefault(g => g.Id == id);
+            //check if exists
+            if(game == null)
+            {
+                return NotFound();
+            }
+            //create the model
+            var gamesInfoViewModel = new GamesInfoViewModel 
+            {
+                //fill the model
+                Title = game.Title,
+                Developer = game.Developer.Name,
+                Rating = game.Rating
+            };
+            //pass to the view
+            return View(gamesInfoViewModel);
         }
     }
 }

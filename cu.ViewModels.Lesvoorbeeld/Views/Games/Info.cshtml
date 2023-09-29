@@ -1,0 +1,17 @@
+﻿@model cu.ViewModels.Lesvoorbeeld.ViewModels.GamesInfoViewModel
+ 
+<h1>Info</h1>
+<div class="row">
+    <div class="col col-lg-3 mx-auto">
+        <div class="card" style="width: 18rem;">
+            <!--tips: add .text-center,.text-right to the .card to change card text alignment-->
+            <img src="https://placehold.co/600x400" class="card-img-top" alt="@Model.Title">
+            <div class="card-body">
+                <h5 class="card-title">@Model.Title</h5>
+                <h6 class="card-subtitle mb-2 text-muted">@Model.Developer</h6>
+                <p class="card-text">Rating: @Model.Rating </p>
+                <a href="/games/index" class="btn btn-primary">Back</a>
+            </div>
+        </div>
+    </div>
+</div>

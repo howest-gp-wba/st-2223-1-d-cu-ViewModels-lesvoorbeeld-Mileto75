@@ -1,8 +1,8 @@
-﻿@model cu.ViewModels.Lesvoorbeeld.ViewModels.GamesIndexViewModel
+﻿@model GamesIndexViewModel
 
-<h1>@ViewData["PageTitle"]</h1>
+
 @foreach(var game in Model.Games)
 { 
-    @game<br />
+    <a href="/games/info/@game.Id" class="page-link">@game.Text</a>
 }
 

@@ -2,6 +2,6 @@
 {
     public class GamesIndexViewModel
     {
-        public List<string> Games { get; set; }
+        public IEnumerable<BaseViewModel> Games { get; set; }
     }
 }
